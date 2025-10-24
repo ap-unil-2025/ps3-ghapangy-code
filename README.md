@@ -32,10 +32,10 @@ python bonus_password_generator.py  # if completed
 ```
 
 ## Submission Checklist
-- [ ] Problem 1: Git workflow completed with at least 4 commits
-- [ ] Problem 2: Temperature converter works correctly
-- [ ] Problem 3: Number analysis handles all requirements
-- [ ] Problem 4: File word counter produces correct output
-- [ ] (Optional) Bonus password generator completed
-- [ ] All code is properly commented
-- [ ] Repository pushed to GitHub
+- [X] Problem 1: Git workflow completed with at least 4 commits
+- [X] Problem 2: Temperature converter works correctly
+- [X] Problem 3: Number analysis handles all requirements
+- [X] Problem 4: File word counter produces correct output
+- [X] (Optional) Bonus password generator completed
+- [X] All code is properly commented
+- [X] Repository pushed to GitHub
