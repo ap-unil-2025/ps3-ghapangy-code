@@ -9,6 +9,8 @@ import string
 
 def generate_password(length=12, use_uppercase=True, use_lowercase=True,
                      use_digits=True, use_special=True):
+    
+    password = []
     """
     Generate a random password based on criteria.
 
@@ -24,6 +26,19 @@ def generate_password(length=12, use_uppercase=True, use_lowercase=True,
     """
     characters = ""
 
+    if use_lowercase:
+        characters += string.ascii_lowercase
+        password.append(random.choice(string.ascii_lowercase))
+    if use_uppercase:
+        characters += string.ascii_uppercase
+        password.append(random.choice(string.ascii_uppercase))
+    if use_digits:
+        characters += string.digits
+        password.append(random.choice(string.digits))
+    if use_special:
+        characters += string.punctuation
+        password.append(random.choice(string.punctuation))
+
     # TODO: Build character set based on parameters
     # if use_lowercase:
     #     characters += string.ascii_lowercase
@@ -32,8 +47,10 @@ def generate_password(length=12, use_uppercase=True, use_lowercase=True,
     if not characters:
         return "Error: No character types selected!"
 
-    password = []
+    while len(password) < length:
+        password.append(random.choice(characters))
 
+    random.shuffle(password)
     # TODO: Ensure at least one character from each selected type
     # This prevents passwords that don't meet the criteria
 
@@ -45,6 +62,7 @@ def generate_password(length=12, use_uppercase=True, use_lowercase=True,
 
 
 def password_strength(password):
+
     """
     Rate password strength from 1-5.
 
@@ -55,6 +73,18 @@ def password_strength(password):
         str: Strength rating
     """
     score = 0
+    if len(password) >= 8:
+        score += 1
+    if len(password) >= 12:
+        score += 1
+    if any(c.islower() for c in password):
+        score += 1
+    if any(c.isupper() for c in password):
+        score += 1
+    if any(c.isdigit() for c in password):
+        score += 1
+    if any(c in string.punctuation for c in password):
+        score += 1
 
     # TODO: Add points for different criteria
     # - Length >= 8: +1 point
