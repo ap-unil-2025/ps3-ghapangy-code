@@ -33,6 +33,24 @@ pass
 
 
 def temperature_converter():
+    while True:
+        try:
+            temp = float(input("Enter the temperature value: "))
+            break
+        except ValueError:
+            print("Please enter a valid number.")
+    while True:
+        unit = input("Enter the unit (C for Celsius, F for Fahrenheit): ").strip().upper()
+        if unit in ["C", "F"]:
+            break
+        else:
+            print("Please enter C or F.")
+    if unit == "C":
+        converted = celsius_to_fahrenheit(temp)
+        print(f"{temp:.2f}°C = {converted:.2f}°F")
+    else:
+        converted = fahrenheit_to_celsius(temp)
+        print(f"{temp:.2f}°F = {converted:.2f}°C")
     """
     Interactive temperature converter.
     Ask user for:
