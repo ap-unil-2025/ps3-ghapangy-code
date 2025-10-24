@@ -1,0 +1,8 @@
+943b75d Crosses
+448967d Problem 4: File analysis functions implemented and tested
+7253b71 Problem 3: Number analysis functions implemented
+7bccc6d Problem 2: Added temperature_converter interactive function
+875abf6 Problem 2: Temperature converter completed and tested
+437d428 Add my name and date
+7bcb689 Add GitHub Classroom autograding configuration
+2dc2daa Initial commit
