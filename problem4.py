@@ -2,8 +2,8 @@
 Problem 4: File Word Counter
 Process text files and perform various analyses.
 """
-
-def create_sample_file(filename="sample.txt"):
+import string 
+def create_sample_file(filename="sample.txt"): 
     """
     Create a sample text file for testing.
 
@@ -20,7 +20,11 @@ Many companies use Python for their projects."""
     print(f"Created {filename}")
 
 
-def count_words(filename):
+def count_words(filename): 
+    with open(filename, 'r') as f:
+        text = f.read()
+    words = text.split()
+    return len(words)
     """
     Count total words in the file.
 
@@ -36,6 +40,9 @@ def count_words(filename):
 
 
 def count_lines(filename):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+    return len(lines)
     """
     Count total lines in the file.
 
@@ -50,6 +57,11 @@ def count_lines(filename):
 
 
 def count_characters(filename, include_spaces=True):
+    with open(filename, 'r') as f:
+        text = f.read()
+    if not include_spaces:
+        text = text.replace(" ", "")
+    return len(text)
     """
     Count characters in the file.
 
@@ -66,6 +78,14 @@ def count_characters(filename, include_spaces=True):
 
 
 def find_longest_word(filename):
+    with open(filename, 'r') as f:
+        text = f.read()
+    # Supprime la ponctuation
+    text = text.translate(str.maketrans("", "", string.punctuation))
+    words = text.split()
+    if not words:
+        return None
+    return max(words, key=len)
     """
     Find and return the longest word in the file.
 
@@ -81,6 +101,14 @@ def find_longest_word(filename):
 
 
 def word_frequency(filename):
+    frequency = {}
+    with open(filename, 'r') as f:
+        text = f.read().lower()
+    text = text.translate(str.maketrans("", "", string.punctuation))
+    words = text.split()
+    for word in words:
+        frequency[word] = frequency.get(word, 0) + 1
+    return frequency
     """
     Return a dictionary of word frequencies.
     Convert words to lowercase and remove punctuation.
@@ -91,9 +119,7 @@ def word_frequency(filename):
     Returns:
         dict: Dictionary with words as keys and frequencies as values
     """
-    import string
-
-    frequency = {}
+    
 
     # TODO: Open file
     # TODO: Read all words
